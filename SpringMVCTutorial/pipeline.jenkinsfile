@@ -1,0 +1,29 @@
+pipeline{
+    agent any
+        stages{
+            //stage("checkout"){
+             //   steps{
+               //     echo "Clonning...."
+                 //   git branch: 'develop', url: 'https://github.com/coder-isb/Spring-AWS.git'
+                    //sh 'pwd'
+                    //sh 'ls -lrt'
+                //}
+            //}
+            stage("build"){
+                steps{
+                    //echo "Build"
+                    //sh 'pwd'
+                    //sh 'ls -lrt'
+                    //sh 'which mvn'
+                    sh 'cd SpringMVCTutorial && mvn clean install shade:shade'
+                    archiveArtifacts 'SpringMVCTutorial/target/*.war'
+                    //sh 'ls -rlt SpringMVCTutorial/target/*'
+                }
+            }
+            stage("deploy"){
+                steps{
+                    sh 'cp SpringMVCTutorial/target/SpringMVCTutorial.war /opt/apache-tomcat-8.0.53/webapps'
+                }
+            }
+        }
+}
