@@ -2,7 +2,7 @@ FROM ubuntu:latest
 MAINTAINER indrajet.it.in@gmail.com
 RUN apt-get update && \
 apt-get install -y openjdk-8-jdk
-RUN apt-get install wget
+RUN apt-get install -y wget
 RUN cd $HOME && \ 
 mkdir servers && \ 
 cd servers && \ 
