@@ -1,6 +1,7 @@
 FROM ubuntu:latest
 MAINTAINER indrajet.it.in@gmail.com
-RUN apt-get install -y openjdk8-jre
+RUN apt-get update && \
+apt-get install -y openjdk8-jre
 RUN apt-get install wget
 RUN cd $HOME && \ 
 mkdir servers && \ 
