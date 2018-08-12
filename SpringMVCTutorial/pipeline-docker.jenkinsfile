@@ -20,12 +20,7 @@ pipeline{
             }
             stage("deploy"){
                 steps{
-                    sh '''a=`docker ps -a | grep mvc-tutorial`
-                    if [ $? -eq 0 ]
-                    then
-                    	docker rm -f mvc-tutorial
-                    fi
-                    docker run --name mvc-tutorial -d -p 8081:8080 iamisb/mvc-tutorial:latest''' 
+                    sh 'cd SpringMVCTutorial && sh deploy.sh'
                 }
             }
         }
