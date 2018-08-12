@@ -20,8 +20,10 @@ pipeline{
             }
             stage("deploy"){
                 steps{
-                	sh 'docker rm -f mvc-tutorial'
-                    sh 'docker run --name mvc-tutorial -d -p 8081:8080 iamisb/mvc-tutorial:latest'
+                	sh 'chmod 755 SpringMVCTutorial/deploy.sh'
+                	sh 'bash SpringMVCTutorial/deploy.sh'
+                	// 'docker rm -f mvc-tutorial'
+                    //sh 'docker run --name mvc-tutorial -d -p 8081:8080 iamisb/mvc-tutorial:latest'
                 }
             }
         }
