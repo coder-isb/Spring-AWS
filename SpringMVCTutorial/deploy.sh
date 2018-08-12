@@ -1,6 +1,7 @@
 #!/bin/bash
 docker ps -a | grep mvc-tutorial
-if [ $? -eq 0 ];then
+if [ $? -eq 0 ]
+then
 	echo "Deleting containers...."
 	docker rm -f mvc-tutorial
 fi

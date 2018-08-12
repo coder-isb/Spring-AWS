@@ -20,7 +20,7 @@ pipeline{
             }
             stage("deploy"){
                 steps{
-                    sh 'cd SpringMVCTutorial && sh deploy.sh'
+                    sh 'cd SpringMVCTutorial && chmod 755 deploy.sh && ./deploy.sh'
                 }
             }
         }
