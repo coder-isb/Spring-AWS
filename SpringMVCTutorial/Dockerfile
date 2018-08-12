@@ -12,4 +12,5 @@ tar -xvf apache-tomcat-8.0.53.tar && \
 mv apache-tomcat-8.0.53 tomcat && \
 mv tomcat /opt
 COPY target/SpringMVCTutorial.war /opt/tomcat/webapps/
-CMD /opt/tomcat/catalina.sh run
+RUN chmod 755 /opt/tomcat/bin/catalina.sh 
+CMD /opt/tomcat/bin/catalina.sh run
