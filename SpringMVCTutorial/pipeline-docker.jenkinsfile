@@ -23,7 +23,7 @@ pipeline{
                     sh 'chmod 755 SpringMVCTutorial/deploy.sh'
                     sh 'pwd'
                     sh 'ls -rlt'
-                    sh 'sh SpringMVCTutorial/deploy.sh'
+                    sh 'cd SpringMVCTutorial && deploy.sh'
                 }
             }
         }
