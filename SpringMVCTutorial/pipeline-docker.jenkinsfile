@@ -1,0 +1,28 @@
+pipeline{
+    agent any
+        stages{
+            stage("maven-build"){
+                steps{
+                    sh 'cd SpringMVCTutorial && mvn clean install shade:shade'
+                    archiveArtifacts 'SpringMVCTutorial/target/*.war'
+                    
+                }
+            }
+            stage("docker-build"){
+            	steps{
+            		sh 'cd SpringMVCTutorial && sudo docker build -t iamisb/mvc-tutorial:latest .'
+            	}
+            }
+            stage("docker-push"){
+            	steps{
+            		sh 'docker push iamisb/mvc-tutorial:latest'
+            	}
+            }
+            stage("deploy"){
+                steps{
+                    sh 'docker rm -f mvc-tutorial'
+                    sh 'docker run --name mvc-tutorial -d -p 8081:8080 iamisb/mvc-tutorial:latest' 
+                }
+            }
+        }
+}
